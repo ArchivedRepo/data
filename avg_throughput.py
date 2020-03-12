@@ -2,6 +2,16 @@ import matplotlib.pyplot as plt
 
 UNLOCK_PIN = 18
 
+def calculate_total_time(lines):
+    """
+    Output a time in seconds.
+    """
+    time = 0
+    for line in lines:
+        time += int(line[:-4])
+    return time / (10 ** 6)
+
+
 def count_packets_between_unlock(lines, pin_num: int):
     time = 0
     result = []
@@ -15,7 +25,15 @@ def count_packets_between_unlock(lines, pin_num: int):
         elif int(line[-3: -1]) == pin_num:
             num_packets += 1
     return result
-            
+
+
+def count_num_packets(lines, pin_num: int):
+    num_packets = 0
+    for line in lines:
+        if int(line[-3: -1]) == pin_num:
+            num_packets += 1
+    return num_packets
+
 
 if __name__ == "__main__":
     with open('./output.20000_corrected.dat') as ptr:
@@ -32,12 +50,15 @@ if __name__ == "__main__":
         plt.axvline(x_axis[i] + 0.5)
     plt.legend()
 
-    avg_func = lambda lst,name:print(f'avg throughput for {name} is {sum(lst)/len(lst)}')
-    avg_func(mid, "mid")
-    avg_func(left, "left")
-    avg_func(right, "right")
+    total_time = calculate_total_time(lines)
+    print(total_time)
+
+    avg_func = lambda pin,name:print(f'avg throughput for {name} is {count_num_packets(lines, pin)/total_time}pps')
+    avg_func(27, "mid")
+    avg_func(22, "left")
+    avg_func(17, "right")
 
 
 
-    plt.show()
+    # plt.show()
     
