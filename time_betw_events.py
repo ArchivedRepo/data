@@ -7,7 +7,7 @@ lst_17f = []
 lst_22f = []
 lst_27f = []
 
-with open('/Users/will/Downloads/399_test/output.20000.dat') as csv_file:
+with open('/Users/will/Downloads/399_test/output.200000.corrected.dat') as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=']')
     sum_unlock = 0
     sum_17 = 0
@@ -40,10 +40,10 @@ with open('/Users/will/Downloads/399_test/output.20000.dat') as csv_file:
             lst_27f.append(sum_27)
             sum_27 = 0
 
-final_unlock = lst_unlock[1:]
-final_17 = lst_17f[1:]
-final_22 = lst_22f[1:]
-final_27 = lst_27f[1:]
+final_unlock = lst_unlock
+final_17 = lst_17f
+final_22 = lst_22f
+final_27 = lst_27f
 
 
 # print('T:' + str(final_unlock[1]))
