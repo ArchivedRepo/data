@@ -7,7 +7,7 @@ lst_17f = []
 lst_22f = []
 lst_27f = []
 
-with open('/Users/will/Downloads/399_test/output.200000.corrected.dat') as csv_file:
+with open('/Users/will/Downloads/399_test/output_150000_cw_aggr_0312.dat') as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=']')
     sum_unlock = 0
     sum_17 = 0

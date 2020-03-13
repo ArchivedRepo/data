@@ -36,7 +36,7 @@ def count_num_packets(lines, pin_num: int):
 
 
 if __name__ == "__main__":
-    with open('./output.20000_corrected.dat') as ptr:
+    with open('./output_150000_cw_aggr_0312.dat') as ptr:
         lines =  ptr.readlines()
     lines = [line[line.find(']')+1:].strip() for line in lines]
     left = count_packets_between_unlock(lines, 22)
